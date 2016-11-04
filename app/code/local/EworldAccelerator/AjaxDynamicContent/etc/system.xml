@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <admin translate="label" module="ajaxdynamiccontent">
+            <groups>
+                <adc_group translate="label">
+                    <label>eworldAccelerator Ajax Dynamic Content</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>210</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <eacc_adc_active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>radios</frontend_type>
+                            <source_model>ajaxdynamiccontent/system_config_source_yesnocustom</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </eacc_adc_active>
+                        <eacc_adc_test_ip translate="label">
+                            <label>Test IP</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[This module will be active only for this public IP]]></comment>
+                        </eacc_adc_test_ip>
+                        <eacc_adc_drop_before translate="label">
+                            <label>Drop content before getting URL source</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </eacc_adc_drop_before>
+                        <eacc_adc_selectors translate="label">
+                            <label>Selector(s) and URL(s)</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[Selector(s) are jQuery like selector describing element to be replaced.<br>URL are
+                                page where we can find the specified element to replace.<br>We recommend (for speed
+                                optimization) to have only one URL for all selectors defined.<br>For multilanguage stores,
+                                you can use lang_xx class added to tag by Magento 1 selector & 1 URL per line,
+                                separated by ;
+                            ]]></comment>
+                        </eacc_adc_selectors>
+                    </fields>
+                </adc_group>
+            </groups>
+        </admin>
+    </sections>
+</config>

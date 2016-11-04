@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <EworldAccelerator_AjaxDynamicContent>
+            <version>0.1.0</version>
+        </EworldAccelerator_AjaxDynamicContent>
+    </modules>
+    <!--<frontend>
+        <layout>
+            <updates>
+                <ajaxdynamiccontent>
+                    <file>ajaxdynamiccontent.xml</file>
+                </ajaxdynamiccontent>
+            </updates>
+        </layout>
+    </frontend>-->
+    <global>
+        <helpers>
+            <ajaxdynamiccontent>
+                <class>EworldAccelerator_AjaxDynamicContent_Helper</class>
+            </ajaxdynamiccontent>
+        </helpers>
+        <models>
+            <ajaxdynamiccontent>
+                <class>EworldAccelerator_AjaxDynamicContent_Model</class>
+            </ajaxdynamiccontent>
+        </models>
+        <events>
+            <admin_system_config_section_save_after>
+                <observers>
+                    <admin_system_config_section_save_after_handler>
+                        <type>model</type>
+                        <class>ajaxdynamiccontent/observer</class>
+                        <method>generateJSON</method>
+                        <args />
+                    </admin_system_config_section_save_after_handler>
+                </observers>
+            </admin_system_config_section_save_after>
+            <controller_action_layout_generate_blocks_after>
+                <observers>
+                    <controller_action_layout_generate_blocks_after_handler>
+                        <type>model</type>
+                        <class>ajaxdynamiccontent/observer</class>
+                        <method>header</method>
+                        <args />
+                    </controller_action_layout_generate_blocks_after_handler>
+                </observers>
+            </controller_action_layout_generate_blocks_after>
+        </events>
+    </global>
+</config> 
