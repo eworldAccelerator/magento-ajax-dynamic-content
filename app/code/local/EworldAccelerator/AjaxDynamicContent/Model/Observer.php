@@ -40,12 +40,14 @@ class EworldAccelerator_AjaxDynamicContent_Model_Observer {
 	 * @param Varien_Event_Observer $observer
 	 */
 	public function header($observer) {
-		if (strpos(get_class($observer->getEvent()->getData('action')), 'Adminhtml') === false) {
-			$enabled = (int) Mage::getStoreConfig('admin/adc_group/eacc_adc_active');
-			$testIP = trim(Mage::getStoreConfig('admin/adc_group/eacc_adc_test_ip'));
-			if ($enabled == 1 || $enabled == 3 && $_SERVER['REMOTE_ADDR'] == $testIP) {
-				$layout = Mage::app()->getLayout();
-				$layout->getBlock('head')->addJs('EworldAccelerator/AjaxDynamicContent/front.js');
+		if (isset($GLOBALS['eworldAcceleratorCache']) && is_object($GLOBALS['eworldAcceleratorCache']) && $GLOBALS['eworldAcceleratorCache']->getCaching()) {
+			if (strpos(get_class($observer->getEvent()->getData('action')), 'Adminhtml') === false) {
+				$enabled = (int)Mage::getStoreConfig('admin/adc_group/eacc_adc_active');
+				$testIP = trim(Mage::getStoreConfig('admin/adc_group/eacc_adc_test_ip'));
+				if ($enabled == 1 || $enabled == 3 && $_SERVER['REMOTE_ADDR'] == $testIP) {
+					$layout = Mage::app()->getLayout();
+					$layout->getBlock('head')->addJs('EworldAccelerator/AjaxDynamicContent/front.js');
+				}
 			}
 		}
 	}
